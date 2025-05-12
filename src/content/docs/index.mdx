@@ -17,14 +17,16 @@ hero:
       variant: minimal
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
-
-## What to Expect
+import { Card, CardGrid } from '@astrojs/starlight/components'
+import ListCard from '@/components/ListCard.astro'
 
 <CardGrid stagger>
-	<Card title="Update content" icon="pencil">
-		Edit `src/content/docs/index.mdx` to see this page change.
-	</Card>
+	<ListCard title="Emergency" icon="warning">
+		- [Medical](./emergent/medical)
+		- [Suicide](./emergent/suicide)
+		- [Life-crisis](./emergent/life-crisis)
+	</ListCard>
+
 	<Card title="Add new content" icon="add-document">
 		Add Markdown or MDX files to `src/content/docs` to create new pages.
 	</Card>

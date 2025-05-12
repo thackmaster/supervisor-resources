@@ -12,8 +12,19 @@ export default defineConfig({
 	integrations: [
 		starlight({
 			title: 'AFSR',
-			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/withastro/starlight' }],
+			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/thackmaster' }],
+			editLink: { baseUrl: 'https://github.com/thackmaster/supervisor-resources/edit/main' },
 			sidebar: [
+				{
+					label: 'Emergent',
+					//link: '/emergent/index',
+					autogenerate: { directory: 'emergent' },
+				},
+				{
+					label: 'Site Information',
+					autogenerate: { directory: 'site-information' },
+					collapsed: true,
+				},
 				{
 					label: 'Guides',
 					items: [
