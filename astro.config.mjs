@@ -2,6 +2,7 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import starlightGiscus from 'starlight-giscus';
+import { devServerFileWatcher } from './config/integrations/dev-server-file-watcher';
 
 // https://astro.build/config
 export default defineConfig({
@@ -10,38 +11,21 @@ export default defineConfig({
 		port: 4321
 	},
 	integrations: [
+		devServerFileWatcher([
+			'./config/**', // Custom plugins and integrations
+			'./astro.sidebar.ts' // Sidebar configuration file
+		]),
 		starlight({
 			title: 'AFSR',
 			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/thackmaster' }],
 			editLink: { baseUrl: 'https://github.com/thackmaster/supervisor-resources/edit/main' },
+			lastUpdated: true,
 			sidebar: [
 				{
 					label: 'Emergent',
-					//link: '/emergent/index',
 					autogenerate: { directory: 'emergent' },
 				},
-				{
-					label: 'Site Information',
-					autogenerate: { directory: 'site-information' },
-					collapsed: true,
-				},
-				{
-					label: 'Guides',
-					items: [
-						// Each item here is one entry in the navigation menu.
-						{ label: 'Example Guide', slug: 'guides/example' },
-					],
-				},
-				{
-					label: 'Reference',
-					autogenerate: { directory: 'reference' },
-				},
-				{
-					label: 'Benefits',
-					link: '/benefits'
-				}
 			],
-			lastUpdated: true,
 			plugins: [
 				starlightGiscus({
 					repo: 'thackmaster/supervisor-resources',
